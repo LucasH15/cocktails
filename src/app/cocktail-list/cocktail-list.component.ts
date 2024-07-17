@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cocktail } from '../interfaces/cocktail.interface';
 
 @Component({
@@ -7,6 +7,9 @@ import { Cocktail } from '../interfaces/cocktail.interface';
   styleUrl: './cocktail-list.component.scss'
 })
 export class CocktailListComponent {
+  @Input() currentCocktail: Cocktail;
+  @Output() private showCocktailDetails: EventEmitter<Cocktail> = new EventEmitter();
+
   cocktails: Cocktail[] = [{
     name: 'Mojito Royal',
     image: 'https://www.destinationcocktails.fr/wp-content/uploads/2019/11/Cocktail-mojito-1.jpg.webp',
@@ -20,4 +23,8 @@ export class CocktailListComponent {
     image: 'https://www.destinationcocktails.fr/wp-content/uploads/2019/11/cocktail-daiquiri-1.jpg.webp',
     description: 'Au début du 20e siècle, l\'ingénieur Pagliuchi visite une mine de fer appelée Daïquiri, située à l\'est de Cuba, non loin de Santiago de Cuba, guidé par l\'ingénieur américain Jennings Cox. Ce dernier, heureux de proposer un verre à son collègue après cette dure journée de travail, s\'aperçoit que sa réserve ne contient que du rhum, des citrons et du sucre de canne. Qu\'à cela ne tienne, il verse ces ingrédients sur de la glace et c\'est ainsi qu\'ils se délectent de ce cocktail tout aussi rafraîchissant qu\'original. Ainsi naquit le Daïquiri qui devint l\'une des boissons préférées de l\'écrivain Ernest Hemingway qui y ajoutait un trait de marasquin.'
   }];
+
+  public showCocktail(cocktail: Cocktail) {
+    this.showCocktailDetails.emit(cocktail);
+  }
 }

@@ -112,7 +112,8 @@ body {
     border-top: 0;
     transition: background-color .4s, color .4s;
 
-    &:hover {
+    &:hover,
+    &.active {
       background-color: var(--primary);
       color: white;
       cursor: pointer;
