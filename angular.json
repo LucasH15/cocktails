@@ -6,15 +6,15 @@
     "cocktails": {
       "projectType": "application",
       "schematics": {
-        "@schematics/cocktails:component": {
+        "@schematics/angular:component": {
           "style": "scss",
           "standalone": false,
           "skipTests": true
         },
-        "@schematics/cocktails:directive": {
+        "@schematics/angular:directive": {
           "standalone": false
         },
-        "@schematics/cocktails:pipe": {
+        "@schematics/angular:pipe": {
           "standalone": false
         }
       },
