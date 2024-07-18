@@ -1,0 +1,61 @@
+.list-primary {
+  li {
+    padding: 10px 15px;
+    border: 1px solid $lightgray;
+    border-top: 0;
+    transition: background-color .4s, color .4s;
+
+    &:hover,
+    &.active {
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+    }
+
+    &:first-child {
+      border-top: 1px solid $lightgray;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .4s;
+
+  &-primary {
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+      background-color: $lightprimary;
+    }
+  }
+
+  &-danger {
+    background-color: $danger;
+    color: white;
+
+    &:hover {
+      background-color: $lightdanger;
+    }
+  }
+
+  &-close {
+    width: 1em;
+    height: 1em;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    box-sizing: content-box;
+  }
+}

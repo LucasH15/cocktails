@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 import { CocktailDetailsComponent } from './cocktail-details/cocktail-details.component';
+import { CocktailAddComponent } from './cocktail-add/cocktail-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CocktailListComponent,
-    CocktailDetailsComponent
+    CocktailDetailsComponent,
+    CocktailAddComponent
   ],
   imports: [
     BrowserModule,

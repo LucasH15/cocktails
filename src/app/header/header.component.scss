@@ -1,5 +1,7 @@
+@import "../../styles";
+
 nav {
-  background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(45deg, $primary 0%, $accent 100%);
   color: white;
 
   .logo {
@@ -15,7 +17,7 @@ nav {
       padding: 10px 20px;
 
       &:hover {
-        background-color: var(--secondary);
+        background-color: $secondary;
       }
     }
   }

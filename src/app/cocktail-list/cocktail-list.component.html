@@ -1,7 +1,13 @@
 <h3 class="mb-20">Liste des cocktails</h3>
 
+<input #search type="text" placeholder="Rechercher un cocktail" (keyup)="updateCocktails(search.value)" class="mb-20">
+
 <ul class="list-primary mb-20">
-  <li (click)="showCocktail(cocktail)" *ngFor="let cocktail of cocktails" [class]="currentCocktail == cocktail ? 'active' : ''">{{ cocktail.name }}</li>
+    <li (click)="showCocktail(cocktail)" *ngFor="let cocktail of cocktails"
+        [class]="currentCocktail == cocktail ? 'active' : ''">
+        {{ cocktail.name }}
+    </li>
 </ul>
 
-<button class="btn btn-primary">Ajouter un cocktail</button>
+<button (click)="showModal()" class="btn btn-primary">Ajouter un cocktail</button>
+<app-cocktail-add (showModalEvent)="showModal()" [active]="active"/>
