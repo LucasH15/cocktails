@@ -19,5 +19,6 @@ export class CocktailContainerComponent implements OnInit {
 
   public showCocktail(cocktailIndex?: number) {
     this.currentCocktailIndex = cocktailIndex;
+    this.currentCocktail = this.cocktails.find(({ id }) => id === this.currentCocktailIndex);
   }
 }
