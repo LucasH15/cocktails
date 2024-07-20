@@ -3,8 +3,8 @@
 <input #search type="text" placeholder="Rechercher un cocktail" (keyup)="updateCocktails(search.value)" class="mb-20">
 
 <ul class="list-primary mb-20">
-    <li (click)="showCocktail(cocktail)" *ngFor="let cocktail of cocktails"
-        [class]="currentCocktail == cocktail ? 'active' : ''">
+    <li *ngFor="let cocktail of cocktails" (click)="showCocktail(cocktail.id)"
+        [class]="currentCocktailIndex == cocktail.id ? 'active' : ''">
         {{ cocktail.name }}
     </li>
 </ul>

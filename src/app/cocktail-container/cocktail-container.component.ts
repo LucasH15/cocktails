@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cocktail } from '../interfaces/cocktail.interface';
 import datas from '../datas.json';
-import { removeAccents } from '../utils/string';
 
 @Component({
   selector: 'app-cocktail-container',
@@ -10,13 +9,13 @@ import { removeAccents } from '../utils/string';
 })
 export class CocktailContainerComponent implements OnInit {
   cocktails: Cocktail[] = datas;
-  currentCocktail: Cocktail;
+  currentCocktailIndex: number;
 
   ngOnInit() {
-    this.currentCocktail = this.cocktails[0];
+    this.currentCocktailIndex = 0;
   }
 
-  public showCocktail(cocktail?: Cocktail) {
-    this.currentCocktail = cocktail;
+  public showCocktail(cocktailIndex?: number) {
+    this.currentCocktailIndex = cocktailIndex;
   }
 }

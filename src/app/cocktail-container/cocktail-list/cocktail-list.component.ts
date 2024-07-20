@@ -9,14 +9,14 @@ import { removeAccents } from '../../utils/string';
   styleUrl: './cocktail-list.component.scss'
 })
 export class CocktailListComponent {
-  @Input() currentCocktail: Cocktail;
+  @Input() currentCocktailIndex: number;
   @Input() cocktails: Cocktail[];
-  @Output() private showCocktailDetails: EventEmitter<Cocktail> = new EventEmitter();
+  @Output() private showCocktailDetails: EventEmitter<number> = new EventEmitter();
 
   active: boolean = false;
 
-  public showCocktail(cocktail?: Cocktail) {
-    this.showCocktailDetails.emit(cocktail);
+  public showCocktail(cocktailIndex?: number) {
+    this.showCocktailDetails.emit(cocktailIndex);
   }
 
   updateCocktails(search: string) {
