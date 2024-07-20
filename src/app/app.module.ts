@@ -5,9 +5,10 @@ import { NgOptimizedImage } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
-import { CocktailDetailsComponent } from './cocktail-details/cocktail-details.component';
-import { CocktailAddComponent } from './cocktail-add/cocktail-add.component';
+import { CocktailListComponent } from './cocktail-container/cocktail-list/cocktail-list.component';
+import { CocktailDetailsComponent } from './cocktail-container/cocktail-details/cocktail-details.component';
+import { CocktailAddComponent } from './cocktail-container/cocktail-add/cocktail-add.component';
+import { CocktailContainerComponent } from './cocktail-container/cocktail-container.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CocktailAddComponent } from './cocktail-add/cocktail-add.component';
     HeaderComponent,
     CocktailListComponent,
     CocktailDetailsComponent,
-    CocktailAddComponent
+    CocktailAddComponent,
+    CocktailContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Cocktail } from '../interfaces/cocktail.interface';
+import { Cocktail } from '../../interfaces/cocktail.interface';
 
 @Component({
   selector: 'app-cocktail-details',

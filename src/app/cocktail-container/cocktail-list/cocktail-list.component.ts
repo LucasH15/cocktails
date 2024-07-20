@@ -1,6 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Cocktail } from '../interfaces/cocktail.interface';
-import datas from '../datas.json';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Cocktail } from '../../interfaces/cocktail.interface';
+import datas from '../../datas.json';
+import { removeAccents } from '../../utils/string';
 
 @Component({
   selector: 'app-cocktail-list',
@@ -9,20 +10,20 @@ import datas from '../datas.json';
 })
 export class CocktailListComponent {
   @Input() currentCocktail: Cocktail;
+  @Input() cocktails: Cocktail[];
   @Output() private showCocktailDetails: EventEmitter<Cocktail> = new EventEmitter();
 
   active: boolean = false;
-  cocktails: Cocktail[] = datas;
+
+  public showCocktail(cocktail?: Cocktail) {
+    this.showCocktailDetails.emit(cocktail);
+  }
 
   updateCocktails(search: string) {
     this.showCocktail();
     this.cocktails = datas.filter(({ name }) =>
-      name.toLowerCase().includes(search.toLowerCase())
+      removeAccents(name.toLowerCase()).includes(removeAccents(search.toLowerCase()))
     )
-  }
-
-  public showCocktail(cocktail?: Cocktail) {
-    this.showCocktailDetails.emit(cocktail);
   }
 
   public showModal() {
