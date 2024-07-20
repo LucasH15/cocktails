@@ -10,9 +10,11 @@ import datas from '../datas.json';
 export class CocktailContainerComponent implements OnInit {
   cocktails: Cocktail[] = datas;
   currentCocktailIndex: number;
+  currentCocktail: Cocktail;
 
   ngOnInit() {
-    this.currentCocktailIndex = 0;
+    this.currentCocktailIndex = 1;
+    this.currentCocktail = this.cocktails.find(({ id }) => id === this.currentCocktailIndex);
   }
 
   public showCocktail(cocktailIndex?: number) {
