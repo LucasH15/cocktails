@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Cocktail } from '../interfaces/cocktail.interface';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { Cocktail } from '../shared/interfaces/cocktail.interface';
+import { CocktailService } from '../shared/services/cocktail.service';
 import datas from '../datas.json';
 
 @Component({
@@ -7,18 +10,35 @@ import datas from '../datas.json';
   templateUrl: './cocktail-container.component.html',
   styleUrl: './cocktail-container.component.scss'
 })
-export class CocktailContainerComponent implements OnInit {
+export class CocktailContainerComponent implements OnInit, OnDestroy {
   cocktails: Cocktail[] = datas;
   currentCocktailIndex: number;
   currentCocktail: Cocktail;
+  subscription: Subscription = new Subscription();
 
-  ngOnInit() {
-    this.currentCocktailIndex = 1;
-    this.currentCocktail = this.cocktails.find(({ id }) => id === this.currentCocktailIndex);
+  constructor(private cocktailService: CocktailService, private router: Router) {
   }
 
-  public showCocktail(cocktailIndex?: number) {
-    this.currentCocktailIndex = cocktailIndex;
-    this.currentCocktail = this.cocktails.find(({ id }) => id === this.currentCocktailIndex);
+  ngOnInit() {
+    this.subscription.add(
+      this.cocktailService.cocktails$.subscribe((cocktails: Cocktail[]) => {
+        this.cocktails = cocktails;
+      })
+    );
+    this.subscription.add(
+      this.cocktailService.selectedCocktail$.subscribe((selectedCocktail: Cocktail) => {
+        this.currentCocktail = selectedCocktail;
+        this.currentCocktailIndex = selectedCocktail.id;
+        this.router.navigate([], { queryParams: { id: this.currentCocktailIndex } });
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  public showCocktail(index?: number) {
+    this.cocktailService.selectCocktail(index);
   }
 }

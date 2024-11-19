@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgOptimizedImage } from '@angular/common';
+import { Route, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,11 @@ import { CocktailListComponent } from './cocktail-container/cocktail-list/cockta
 import { CocktailDetailsComponent } from './cocktail-container/cocktail-details/cocktail-details.component';
 import { CocktailAddComponent } from './cocktail-container/cocktail-add/cocktail-add.component';
 import { CocktailContainerComponent } from './cocktail-container/cocktail-container.component';
+import { SelectedDirective } from './shared/directives/selected.directive';
+
+const APP_ROUTES: Route[] = [
+  { path: '', component: CocktailContainerComponent }
+];
 
 @NgModule({
   declarations: [
@@ -17,14 +23,16 @@ import { CocktailContainerComponent } from './cocktail-container/cocktail-contai
     CocktailListComponent,
     CocktailDetailsComponent,
     CocktailAddComponent,
-    CocktailContainerComponent
+    CocktailContainerComponent,
+    SelectedDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

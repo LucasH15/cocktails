@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Cocktail } from '../../interfaces/cocktail.interface';
+import { Cocktail } from '../../shared/interfaces/cocktail.interface';
 import datas from '../../datas.json';
 import { removeAccents } from '../../utils/string';
 
@@ -9,8 +9,8 @@ import { removeAccents } from '../../utils/string';
   styleUrl: './cocktail-list.component.scss'
 })
 export class CocktailListComponent {
-  @Input() currentCocktailIndex: number;
   @Input() cocktails: Cocktail[];
+  @Input() selectedCocktail: Cocktail;
   @Output() private showCocktailDetails: EventEmitter<number> = new EventEmitter();
 
   active: boolean = false;

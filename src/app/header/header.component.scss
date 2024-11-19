@@ -9,16 +9,7 @@ nav {
     font-weight: bold;
   }
 
-  ul {
-    li {
-      display: inline-block;
-      border-radius: 3px;
-      transition: background-color .4s;
-      padding: 10px 20px;
-
-      &:hover {
-        background-color: $secondary;
-      }
-    }
+  .active {
+    border-bottom: 1px solid white;
   }
 }
