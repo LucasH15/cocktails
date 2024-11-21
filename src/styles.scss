@@ -1,7 +1,13 @@
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
 @import 'sass/variables';
 @import 'sass/reset';
 @import 'sass/layout';
 @import 'sass/utils';
 @import 'sass/theme';
+@import 'sass/form';
 @import 'sass/input';
 @import 'sass/modal';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
