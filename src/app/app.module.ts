@@ -5,6 +5,8 @@ import { Route, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +16,8 @@ import { CocktailDetailsComponent } from './cocktail-container/cocktail-details/
 import { CocktailAddComponent } from './cocktail-container/cocktail-add/cocktail-add.component';
 import { CocktailContainerComponent } from './cocktail-container/cocktail-container.component';
 import { SelectedDirective } from './shared/directives/selected.directive';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { cocktailReducer } from './shared/reducers/cocktail.reducer';
+import { AppState } from './app.state';
 
 const APP_ROUTES: Route[] = [
   { path: '', component: CocktailContainerComponent }
@@ -37,7 +40,8 @@ const APP_ROUTES: Route[] = [
     RouterModule.forRoot(APP_ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    StoreModule.forRoot<AppState>({ cocktails: cocktailReducer })
   ],
   bootstrap: [AppComponent],
   providers: [

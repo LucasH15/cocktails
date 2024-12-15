@@ -4,9 +4,9 @@
 
 <ul class="list-primary mb-20">
     <li
-      *ngFor="let cocktail of cocktails"
+      *ngFor="let cocktail of cocktails$ | async"
       (click)="showCocktail(cocktail.id)"
-      [appSelected]="cocktail.id === selectedCocktail.id"
+      [appSelected]="cocktail.id === selectedCocktailId"
     >
         {{ cocktail.name }}
     </li>
