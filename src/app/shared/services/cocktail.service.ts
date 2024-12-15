@@ -21,9 +21,13 @@ export class CocktailService {
       this.cocktails = cocktails;
 
       this.activatedRoute.queryParamMap.subscribe((paramMap: ParamMap) => {
+        let selectedId = 1;
+
         if (paramMap.get('id')) {
-          this.selectedCocktail$.next(this.cocktails.find(({ id }) => id === parseInt(paramMap.get('id'))));
+          selectedId = parseInt(paramMap.get('id'));
         }
+
+        this.selectedCocktail$.next(this.cocktails.find(({ id }) => id === selectedId));
       })
     });
   }
