@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Cocktail } from '../interfaces/cocktail.interface';
+import { baseCocktail, Cocktail } from '../interfaces/cocktail.interface';
 
 export const AddCocktail = createAction(
   '[Cocktail] Add Cocktail',
-  props<{ cocktail: Cocktail }>()
+  props<{ cocktail: baseCocktail }>()
 );
 
 export const SelectCocktail = createAction(

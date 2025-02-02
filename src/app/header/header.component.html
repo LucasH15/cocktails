@@ -1,4 +1,9 @@
 <nav class="d-flex flex-row flex-align-items-center p-10">
   <span routerLink="/" class="logo p-20">Cocktails</span>
   <span routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</span>
+
+  <button mat-mini-fab (click)="toggleDarkTheme()" class="ml-auto">
+    <mat-icon *ngIf="theme() === 'light'" aria-hidden="false" aria-label="Changer de thème" fontIcon="dark_mode"></mat-icon>
+    <mat-icon *ngIf="theme() === 'dark'" aria-hidden="false" aria-label="Changer de thème" fontIcon="light_mode"></mat-icon>
+  </button>
 </nav>

@@ -22,6 +22,7 @@ export class CocktailDetailsComponent implements OnInit {
   ngOnInit() {
     const urlParams = new URLSearchParams(window.location.search);
     const currentId = urlParams.get('id');
+
     this.store.select('cocktails').subscribe((cocktails: Cocktail[]) => {
       const cocktailFound = cocktails.find(({ id }) => id === parseInt(currentId));
 

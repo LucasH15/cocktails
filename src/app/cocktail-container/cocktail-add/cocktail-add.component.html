@@ -1,8 +1,10 @@
 <div [class]="'modal' + (active ? ' show' : '')">
   <div class="modal-dialog">
     <div class="modal-content">
-      <h1>Ajouter</h1>
-      <button (click)="showModal()" class="btn btn-close"></button>
+      <h1 class="mb-10">Ajouter</h1>
+      <button (click)="showModal()" class="btn-close" mat-icon-button>
+        <mat-icon aria-hidden="false" aria-label="Fermer" fontIcon="close"></mat-icon>
+      </button>
 
       <form [formGroup]="cocktailForm" (ngSubmit)="onSubmit()" class="form">
         <mat-form-field class="full-width">

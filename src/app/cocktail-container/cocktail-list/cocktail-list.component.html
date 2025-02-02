@@ -6,11 +6,11 @@
     <li
       *ngFor="let cocktail of cocktails$ | async"
       (click)="showCocktail(cocktail.id)"
-      [appSelected]="cocktail.id === selectedCocktailId"
+      [class.active]="cocktail.id === selectedCocktailId"
     >
         {{ cocktail.name }}
     </li>
 </ul>
 
-<button (click)="showModal()" mat-raised-button>Ajouter un cocktail</button>
+<button (click)="showModal()" mat-raised-button class="btn-primary">Ajouter un cocktail</button>
 <app-cocktail-add (showModalEvent)="showModal()" [active]="active"/>

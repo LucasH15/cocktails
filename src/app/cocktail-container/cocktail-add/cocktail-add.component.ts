@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
-import { CocktailService } from '../../shared/services/cocktail.service';
+import { AppState } from '../../app.state';
+import { AddCocktail } from '../../shared/actions/cocktail.actions';
+// import { CocktailService } from '../../shared/services/cocktail.service';
 
 @Component({
   selector: 'app-cocktail-add',
@@ -27,7 +30,8 @@ export class CocktailAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cocktailService: CocktailService
+    // private cocktailService: CocktailService,
+    private store: Store<AppState>
   ) {
   }
 
@@ -45,7 +49,9 @@ export class CocktailAddComponent implements OnInit {
 
   onSubmit() {
     if (this.cocktailForm.valid) {
-      this.cocktailService.addCocktail(this.cocktailForm.value);
+      // this.cocktailService.addCocktail(this.cocktailForm.value);
+      this.store.dispatch(AddCocktail({ cocktail: this.cocktailForm.value }));
+      this.active = false;
       this.showModal();
     }
   }

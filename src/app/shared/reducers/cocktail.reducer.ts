@@ -33,7 +33,10 @@ export const initialState: Cocktail[] = [{
 
 export const cocktailReducer = createReducer(
     initialState,
-    on(AddCocktail, (state, { cocktail }) => [...state, cocktail]),
+    on(AddCocktail, (state, { cocktail }): Cocktail[] => {
+      const newCocktail = { ...cocktail, id: state[state.length - 1].id + 1 };
+      return [...state, newCocktail];
+    }),
     on(SelectCocktail, (state, { cocktailId }) => state.filter((c) => c.id === cocktailId)),
     on(UpdateCocktail, (state, { cocktail }) => state.map((c) => (c.id === cocktail.id ? cocktail : c))),
     on(DeleteCocktail, (state, { cocktailId }) => state.filter((c) => c.id !== cocktailId)),
