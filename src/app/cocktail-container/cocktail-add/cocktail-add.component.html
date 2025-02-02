@@ -4,23 +4,23 @@
       <h1>Ajouter</h1>
       <button (click)="showModal()" class="btn btn-close"></button>
 
-      <form [formGroup]="cocktailForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label class="form-label">Titre</label>
-          <input type="text" formControlName="name" class="form-control">
-          <div *ngIf="cocktailForm.get('name')?.invalid && cocktailForm.get('name')?.touched">INVALID</div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Description</label>
-          <textarea formControlName="description" class="form-control" rows="3"></textarea>
-          <div *ngIf="cocktailForm.get('description')?.invalid && cocktailForm.get('description')?.touched">INVALID</div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Image url</label>
-          <input formControlName="image" class="form-control">
-          <div *ngIf="cocktailForm.get('image')?.invalid && cocktailForm.get('image')?.touched">INVALID</div>
-        </div>
-        <button type="submit" class="btn btn-success" [disabled]="cocktailForm.invalid">Ajouter</button>
+      <form [formGroup]="cocktailForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Titre</mat-label>
+          <input matInput type="text" formControlName="name">
+          <mat-error *ngIf="name?.invalid && name?.touched">INVALID</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" rows="3"></textarea>
+          <mat-error *ngIf="description?.invalid && description?.touched">INVALID</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Image url</mat-label>
+          <input matInput formControlName="image">
+          <mat-error *ngIf="image?.invalid && image?.touched">INVALID</mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button [disabled]="cocktailForm.invalid">Ajouter</button>
       </form>
     </div>
   </div>

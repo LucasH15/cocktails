@@ -5,6 +5,8 @@ import { Route, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { StoreModule } from '@ngrx/store';
 
@@ -41,6 +43,8 @@ const APP_ROUTES: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
+    MatButtonModule,
+    MatInputModule,
     StoreModule.forRoot<AppState>({ cocktails: cocktailReducer })
   ],
   bootstrap: [AppComponent],

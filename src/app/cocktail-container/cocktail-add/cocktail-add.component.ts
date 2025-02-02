@@ -11,22 +11,32 @@ import { CocktailService } from '../../shared/services/cocktail.service';
 export class CocktailAddComponent implements OnInit {
   @Input({ required: true }) active: boolean;
   @Output() private showModalEvent: EventEmitter<boolean> = new EventEmitter();
+  cocktailForm: FormGroup;
 
-  cocktailForm: FormGroup = new FormGroup({});
+  get name() {
+    return this.cocktailForm.get('name');
+  }
+
+  get description() {
+    return this.cocktailForm.get('description');
+  }
+
+  get image() {
+    return this.cocktailForm.get('image');
+  }
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private cocktailService: CocktailService
   ) {
-
   }
 
   ngOnInit(): void {
-    this.cocktailForm = this.formBuilder.group({
+    this.cocktailForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       image: ['', Validators.required]
-    })
+    });
   }
 
   showModal() {

@@ -1,12 +1,9 @@
-.form-label {
-    margin-bottom: .5rem;
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-label {
-    display: inline-block;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
+.full-width {
+  width: 100%;
 }

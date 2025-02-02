@@ -23,7 +23,13 @@ export class CocktailDetailsComponent implements OnInit {
     const urlParams = new URLSearchParams(window.location.search);
     const currentId = urlParams.get('id');
     this.store.select('cocktails').subscribe((cocktails: Cocktail[]) => {
-      this.cocktail = cocktails.find(({ id }) => id === parseInt(currentId));
+      const cocktailFound = cocktails.find(({ id }) => id === parseInt(currentId));
+
+      if (!cocktailFound) {
+        this.router.navigate([], { queryParams: { id: 1 } });
+      } else {
+        this.cocktail = cocktailFound;
+      }
     });
 
     this.router.events.subscribe((event) => {
@@ -34,6 +40,6 @@ export class CocktailDetailsComponent implements OnInit {
           this.cocktail = cocktails.find(({ id }) => id === parseInt(currentId));
         });
       }
-    })
+    });
   }
 }

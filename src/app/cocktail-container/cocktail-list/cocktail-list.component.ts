@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { Cocktail } from '../../shared/interfaces/cocktail.interface';
 import { AppState } from '../../app.state';
@@ -27,6 +27,13 @@ export class CocktailListComponent implements OnInit {
   ngOnInit() {
     const urlParams = new URLSearchParams(window.location.search);
     this.selectedCocktailId = parseInt(urlParams.get('id'));
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const urlParams = new URLSearchParams(window.location.search);
+        this.selectedCocktailId = parseInt(urlParams.get('id'));
+      }
+    });
   }
 
   public showCocktail(cocktailIndex?: number) {
